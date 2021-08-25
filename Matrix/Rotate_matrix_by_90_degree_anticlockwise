@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+#define N 3
+using namespace std;
+ 
+void displayMatrix(int mat[N][N]);
+ 
+void rotateMatrix(int mat[][N])
+{
+    for (int x = 0; x < N / 2; x++) {
+        for (int y = x; y < N - x - 1; y++) {
+            int temp = mat[x][y];
+            mat[x][y] = mat[y][N - 1 - x];
+            mat[y][N - 1 - x]
+                = mat[N - 1 - x][N - 1 - y];
+            mat[N - 1 - x][N - 1 - y]
+                = mat[N - 1 - y][x];
+            mat[N - 1 - y][x] = temp;
+        }
+    }
+}
+ 
+
+void displayMatrix(int mat[N][N])
+{
+    cout<<"Rotated matrix:\n";
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++)
+            cout<< mat[i][j]<<" ";
+ 
+        cout<<" \n";
+    }
+  
+}
+int main()
+{
+    int A[3][3];
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            cin>>A[i][j];
+        }
+    }
+    rotateMatrix(A);
+    displayMatrix(A);
+ 
+    return 0;
+}
