@@ -1,69 +1,63 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 using namespace std;
+#define R 3
+#define C 3
  
-void printSpiralOrder(vector<vector<int>> const &mat)
+void spiralPrint(int m, int n, int a[R][C])
 {
-    // base case
-    if (mat.size() == 0) {
-        return;
-    }
+    int row = 0, col = 0;
  
-    int top = 0, bottom = mat.size() - 1;
-    int left = 0, right = mat[0].size() - 1;
+    /* row - starting row index
+        m - ending row index
+        col - starting column index
+        n - ending column index
+    
+    */
  
-    while (1)
-    {
-        if (left > right) {
-            break;
+    while (row < m && col < n) {
+        /* Print the first row from
+               the remaining rows */
+        for (int i = col; i < n; ++i) {
+            cout << a[row][i] << " ";
         }
-        // print top row
-        for (int i = left; i <= right; i++) {
-            cout << mat[top][i] << " ";
-        }
-        top++;
+        row++;
  
-        if (top > bottom) {
-            break;
+        /* Print the last column
+         from the remaining columns */
+        for (int i = row; i < m; ++i) {
+            cout << a[i][n - 1] << " ";
         }
-        // print right column
-        for (int i = top; i <= bottom; i++) {
-            cout << mat[i][right] << " ";
-        }
-        right--;
+        n--;
  
-        if (left > right) {
-            break;
+        /* Print the last row from
+                the remaining rows */
+        if (row < m) {
+            for (int i = n - 1; i >= col; --i) {
+                cout << a[m - 1][i] << " ";
+            }
+            m--;
         }
-        // print bottom row
-        for (int i = right; i >= left; i--) {
-            cout << mat[bottom][i] << " ";
-        }
-        bottom--;
  
-        if (top > bottom) {
-            break;
+        /* Print the first column from
+                   the remaining columns */
+        if (col < n) {
+            for (int i = m - 1; i >= row; --i) {
+                cout << a[i][col] << " ";
+            }
+            col++;
         }
-        // print left column
-        for (int i = bottom; i >= top; i--) {
-            cout << mat[i][left] << " ";
-        }
-        left++;
     }
 }
  
+
 int main()
 {
-    vector<vector<int>> mat =
-    {
-        { 1, 2, 3, 4, 5},
-        {16, 17, 18, 19, 6},
-        {15, 24, 25, 20, 7},
-        {14, 23, 22, 21, 8},
-        {13, 12, 11, 10, 9}
-    };
- 
-    printSpiralOrder(mat);
- 
+    int A[3][3];
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            cin>>A[i][j];
+        }
+    }
+    spiralPrint(R, C, A);
     return 0;
 }
