@@ -25,7 +25,7 @@ int main()
 {
     int arr[] = {4,3,7,6,5};
     int k = 5;
-    int n=5;
+    int n = sizeof(arr)/sizeof(arr[0]);
     cout<<"Kth largest element is:"<<kth(arr,n,k);
     return 0;
 }
