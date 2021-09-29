@@ -3,7 +3,7 @@
 #include <queue>
 using namespace std;
  
-int findMinCost(vector<int> &arr){
+int MinCost(vector<int> &arr){
    //min heap
     priority_queue<int, vector<int>, greater<int>> pq(arr.begin(), arr.end());
 
@@ -25,6 +25,6 @@ int findMinCost(vector<int> &arr){
 
 int main(){
     vector<int> arr = { 4,3,2,6 };
-    cout << "The minimum cost is " << findMinCost(arr);
+    cout << "The minimum cost is " <<MinCost(arr);
     return 0;
 }
